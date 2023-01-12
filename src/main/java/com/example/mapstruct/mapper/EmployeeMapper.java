@@ -1,7 +1,9 @@
 package com.example.mapstruct.mapper;
 
+import com.example.mapstruct.domain.Division;
 import com.example.mapstruct.domain.Employee;
-import com.example.mapstruct.domain.EmployeeDTO;
+import com.example.mapstruct.dto.DivisionDTO;
+import com.example.mapstruct.dto.EmployeeDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,4 +17,8 @@ public interface EmployeeMapper {
     @Mapping(target = "id", source = "dto.employeeId")
     @Mapping(target = "name", source = "dto.employeeName")
     Employee employeeDTOtoEmployee(EmployeeDTO dto);
+
+    DivisionDTO divisionToDivisionDTO(Division entity);
+
+    Division divisionDTOtoDivision(DivisionDTO dto);
 }
