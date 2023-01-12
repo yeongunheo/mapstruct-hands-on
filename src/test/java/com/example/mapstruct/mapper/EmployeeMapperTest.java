@@ -7,10 +7,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeMapperTest {
 
+    private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
     private EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
 
     @Test
@@ -44,5 +49,37 @@ class EmployeeMapperTest {
                 entity.getDivision().getId());
         assertEquals(dto.getDivision().getName(),
                 entity.getDivision().getName());
+    }
+
+    @Test
+    public void givenEmpStartDtMappingToEmpDTO_whenMaps_thenCorrect() throws ParseException {
+        //given
+        Employee entity = Employee.builder()
+                .startDt(new Date())
+                .build();
+
+        //when
+        EmployeeDTO dto = mapper.employeeToEmployeeDTO(entity);
+        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
+
+        //then
+        assertEquals(format.parse(dto.getEmployeeStartDt()).toString(),
+                entity.getStartDt().toString());
+    }
+
+    @Test
+    public void givenEmpDTOStartDtMappingToEmp_whenMaps_thenCorrect() throws ParseException {
+        //given
+        EmployeeDTO dto = EmployeeDTO.builder()
+                .employeeStartDt("01-04-2016 01:00:00")
+                .build();
+
+        //when
+        Employee entity = mapper.employeeDTOtoEmployee(dto);
+        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
+
+        //then
+        assertEquals(format.parse(dto.getEmployeeStartDt()).toString(),
+                entity.getStartDt().toString());
     }
 }
