@@ -2,7 +2,6 @@ package com.example.mapstruct.mapper;
 
 import com.example.mapstruct.domain.SimpleDestination;
 import com.example.mapstruct.domain.SimpleSource;
-import com.example.mapstruct.mapper.SimpleSourceDestinationMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
