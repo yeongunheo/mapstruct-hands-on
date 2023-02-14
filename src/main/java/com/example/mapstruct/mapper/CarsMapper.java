@@ -5,10 +5,7 @@ import com.example.mapstruct.domain.Car;
 import com.example.mapstruct.domain.ElectricCar;
 import com.example.mapstruct.dto.CarDTO;
 import com.example.mapstruct.dto.FuelType;
-import org.mapstruct.AfterMapping;
-import org.mapstruct.BeforeMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
+import org.mapstruct.*;
 
 @Mapper
 public abstract class CarsMapper {
@@ -27,5 +24,6 @@ public abstract class CarsMapper {
         carDto.setName(carDto.getName().toUpperCase());
     }
 
+    @Mapping(target = "fuelType", ignore = true)
     public abstract CarDTO toCarDto(Car car);
 }
