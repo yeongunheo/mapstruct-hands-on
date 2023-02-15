@@ -1,7 +1,5 @@
-package com.example.mapstruct.fieldMapping.mapper;
+package com.example.mapstruct.spi;
 
-import com.example.mapstruct.spi.Category;
-import com.example.mapstruct.spi.CategoryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

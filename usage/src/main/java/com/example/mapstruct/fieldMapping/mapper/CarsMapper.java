@@ -1,4 +1,4 @@
-package com.example.mapstruct.spi;
+package com.example.mapstruct.fieldMapping.mapper;
 
 import com.example.mapstruct.fieldMapping.domain.BioDieselCar;
 import com.example.mapstruct.fieldMapping.domain.Car;
